@@ -1,0 +1,240 @@
+/* 
+    Document   : geral css
+    Author     : KLEBER DE SOUZA
+    Description:
+        Formata o painel admin do projeto2016 KLSDESIGNER.
+*/
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;  
+}
+
+body{margin: 0; padding: 0; background-color: #fff ; color: #000;}
+
+.topo{
+    background-image: url(../../images/fundo-topo1.png);
+    background-size: 100%;
+    background-color: #ccc;
+    height: 79px;
+    border-bottom: #0099cc;
+    padding-top: 25px;
+}
+
+.base{
+    height: 400px;
+    background-image: url(../images/imagem.png);
+    background-size: 100% 400px;
+    /*background-color: #999;*/
+    background-repeat: no-repeat;
+    padding-top: 35px;
+    padding-left: 35px;
+}
+
+.base .at{
+    height: 100px;
+    width: 250px;
+    /*background-color: #ccc;*/  
+    color: #fff; 
+    position: absolute;
+    top: 30px;
+    left: 53px;
+}
+
+.base .cli{
+    height: 100px;
+    width: 250px;
+    /*background-color: #ccc;*/  
+    color: #fff; 
+    position: absolute;
+    top: 23px;
+    right: 35px;
+    text-align: center;
+}
+
+
+
+.promise {
+    color: #999;    
+}
+
+/*CORES TEXTO*/
+.txtRed{color: red;}
+.txtVerde{color: #06b70d;}
+.txtOrange{color: #cc6d00;}
+.txtAzul{color: #337ab7;}
+.txtAzulC{color: #00afef;}
+.txtRoxo{color: #8a2eb8;}
+.txtblue{color: #006699;}
+
+/*POSIÇÃO TEXTO*/
+.txtCenter{text-align: center;}
+.txtLeft{text-align: left;}
+.txtRight{text-align: right;}
+
+/*TAMANHO DE FONTES*/
+.size10{font-size: 10px;}
+.size11{font-size: 11px;}
+.size12{font-size: 12px;}
+.size15{font-size: 15px;}
+.size18{font-size: 1.2em;}
+.size20{font-size: 1.3em;}
+.size30{font-size: 2em;}
+
+.mgTop{ margin-top: 20px; }
+.mgTop50{ margin-top: 50px; }
+.mgTop100{ margin-top: 100px; }
+
+/*WELLS*/
+.well{background-color: #000; border: none;}
+.well.seach{background-color: #f3f3f3;}
+.well.seach h3{margin-top: 0; margin-bottom: 15px}
+.well.corWell{background-color: #0d568a;}
+
+
+/*FORMULARIO*/
+input[type=radio] {
+    visibility: hidden;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+/*FORMATA LINKS*/
+a.del{color: red;}
+a.del:hover{color: #8f0000;}
+a.voltar{color: #00afef;}
+a.voltar:hover{color: #ccc;}
+
+/*FORMULARIOS*/
+#frm input[type=radio]:before {
+    content: " ";
+    background-color: #ccc;
+    display: inline-block;
+    margin-right: 15px;
+    width: 15px;
+    height: 15px;
+    border: 3px solid #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    visibility: visible;
+    box-shadow: 0 0 0px 2px #999;
+}
+
+#frm input[type=radio]:checked:before {
+    background-color: #ff3b3b;
+}
+
+/* CHECKBOX */
+#frm input[type=checkbox] {
+    visibility: hidden;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+#frm input[type=checkbox]:before {
+    content: " ";
+    display: inline-block;
+    margin-right: 25px;
+    width: 16px;
+    height: 16px;
+    visibility: visible;
+    border: 2px solid #999;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    line-height: 10px;
+    /*font-size: 15px;*/
+    /*text-align: center;*/
+    /*font-weight: bold;*/
+    color: #052;
+}
+
+#frm input[type=checkbox]:checked:before {
+    content: "\e013";
+    font-family: 'Glyphicons Halflings';
+    font-size: 17px;
+    color: #ff3b3b;
+
+}
+
+
+.input-group {
+    margin: 20px auto;
+    width: 100%;
+}
+input.btn.btn-lg,
+input.btn.btn-lg:focus {
+    outline: none;
+    width: 60%;
+    height: 60px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+button.btn {
+    width: 40%;
+    height: 60px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.promise {
+    color: #999;
+}
+
+
+/*FORMATA COPY*/
+.copy{margin: 10px 0; color: #0d1c61;}
+
+.holder {
+    margin:15px 0;
+}
+.holder a {
+    font-size:15px;
+    cursor:pointer;
+    margin:0 5px;
+    color:#000;
+
+    border:1 px solid;
+    padding: 3px 8px;
+    font-weight: 600
+}
+.holder a:hover {
+    background-color:#000;
+    color:#fff;
+}
+.holder a.jp-previous {
+    margin-right:15px;
+}
+.holder a.jp-next {
+    margin-left:15px;
+}
+.holder a.jp-current,a.jp-current:hover {
+    color:#FF4242;
+    font-weight:bold;
+}
+.holder a.jp-disabled,a.jp-disabled:hover {
+    color:#bbb;
+}
+.holder a.jp-current,a.jp-current:hover,.holder a.jp-disabled,a.jp-disabled:hover {
+    cursor:default;
+    /*background:none;*/
+    background-color: #000;
+    color: #fff;
+}
+.holder span {
+    margin: 0 5px;
+}
+
+
+
+/*TELA MEDIA*/
+@media (min-width: 768px){
+    .navbar-right{margin-right: 0; margin-top: 15px;}    
+}
+
+
+
+.txt{margin-top: 15px; }
+.smlTxt{font-size: 15px;}
+.ctTxt{width: 100%; text-align: center;}
+.cClose{text-align: right; font-size: 20px;}

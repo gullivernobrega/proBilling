@@ -1,0 +1,316 @@
+/* 
+    Document   : geral css
+    Author     : KLEBER DE SOUZA
+    Description:
+        Formata o painel admin do projeto2016 KLSDESIGNER.
+*/
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;  
+}
+
+body{margin: 0; padding: 0; background-color: #b5cedc; color: #fff;}
+
+/*CORES TEXTO*/
+.txtRed{color: red;}
+.txtVerde{color: #06b70d;}
+.txtOrange{color: #cc6d00;}
+.txtAzul{color: #337ab7;}
+.txtRoxo{color: #8a2eb8;}
+.txtBranco{color: #fff;}
+.txtPreto{color: #000;}
+.txtRubi{color: #800;}
+.txtOcre{color: #C90;}
+.txtMusgo{color: #663;}
+.txtAqua{color: #3CC;}
+
+/*POSIÇÃO TEXTO*/
+.txtCenter{text-align: center;}
+.txtLeft{text-align: left;}
+.txtRight{text-align: right;}
+.txtblue{color: #006699;}
+
+/*TAMANHO DE FONTES*/
+.size10{font-size: 10px;}
+.size11{font-size: 11px;}
+.size12{font-size: 12px;}
+.size15{font-size: 15px;}
+.size20{font-size: 20px;}
+
+/*TEXTO EM MAIUSCULO*/
+.upercase{text-transform: uppercase;}
+
+/*COR DE FUNDO*/
+.bkBranco{background-color: #fff;}
+.bkPreto{background-color: #000;}
+.bkvermelho{background-color: #ff3b3b;}
+.bkgrafite{background-color: #999;}
+.bkRoxo{background-color: #8a2eb8;}
+
+/*MARGENS*/
+.mg0{margin: 0;}
+/*=======*/
+.mg10T{margin-top: 10px;}
+.mg20T{margin-top: 20px;}
+/*=======*/
+.mg10B{margin-bottom: 10px;}
+.mg20B{margin-bottom: 20px;}
+/*=======*/
+.mg10R{margin-right: 10px;}
+.mg20R{margin-right: 20px;}
+.mg24R{margin-right: 24px;}
+.mg27R{margin-right: 27px;}
+/*=======*/
+.mg20L{margin-left: 20px;}
+
+/*PADINGS*/
+.pd0G{padding: 0;}
+.pd0T{padding-top: 0;}
+.pd0B{padding-bottom: 0;}
+.pd0L{padding-left: 0;}
+.pd0R{padding-right: 0;}
+/*=========*/
+.pd20T{padding-top: 20px;}
+/*=========*/
+.pd20B{padding-bottom: 20px;}
+/*=========*/
+.pd10L{padding-left: 10px;}
+.pd20L{padding-left: 20px;}
+/*=========*/
+.pd10R{padding-right: 10px;}
+.pd20R{padding-right: 20px;}
+
+
+/*CONFIG MENU*/
+.navbar-brand{height: auto;}
+#base{width: 100%; margin-top:80px;}
+.panel{background-color: #edf0fd; border-radius: 0; box-shadow: none; margin: 0 -20px;}
+.panelMg{margin: 0 10px;}
+.list-group-item:first-child{border-top-left-radius: 0; border-top-right-radius: 0; }
+/*.list-group-item-default{background-color: #222;}*/
+.list-group-item{background-color: #0a436c; border: none; border-top: 1px solid #17578e; border-bottom: 1px solid #17578e;}
+a.list-group-item{color: #fff; }
+a.list-group-item:focus, a.list-group-item:hover{background-color: #b5cedc; color: #fff;}
+.list-group-item-sub{border: none;}
+a.list-group-item-sub{
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px; 
+    background-color: #006f39;
+    color: #fff; 
+    text-decoration: none;
+}
+a.list-group-item-sub:focus, a.list-group-item-sub:hover{background-color: #2b542c; color: #fff;}
+
+/*ICON*/
+.glyphicon{margin-right: 5px;}
+
+/*CONTEUDO*/
+#conteudo{width: 100%; margin-bottom: 25px;}
+
+/*WELLS*/
+.well{background-color: #0c4b79; border: none;}
+.well.base{background-color: #fff;}
+.well.seach{background-color: #dae5ea;}
+.well.seach h3{margin-top: 0; margin-bottom: 15px}
+.well.corWell{background-color: #dae5ea;}
+
+.corWellList{background-color: #fff; border: 1px solid #ccc; }
+
+/*.corGraVerde{background-color: #109618}
+.corGraVermelho{background-color: #dc3912}
+.corGraLaranja{background-color: #ff9900}
+.corGraAzul{background-color: #3366cc}*/
+
+.corGraVerde{color: #109618}
+.corGraVermelho{color: #dc3912}
+.corGraLaranja{color: #ff9900}
+.corGraAzul{color: #3366cc}
+
+
+
+/*PAINEL*/
+.panel-default .panel-heading{background-color: #dedede; color:#109618;}
+.panel-heading{border-top-left-radius: 0; border-top-right-radius: 0;}
+.panel-body{padding: 15px 15px 0 15px;}
+.titPanel{font-size: 25px; color: #109618;}
+
+.scroll{max-height: 250px; min-height: 250px; overflow-y: auto;}
+.scrollA{max-width: 100%; max-height: 250px; min-height: 250px; overflow-y: auto; overflow-x: scroll;}
+
+.baseTable{width: 100%;}
+.tabela{
+    width: 1400px;    
+}
+
+/*CORES DAS PAUSAS DOS AGENTES*/
+.trRed{background-color:  red; color: #fff;} /*pausa - pause*/
+.trAmarelo{background-color:  #ebc700; color: #000;} /*pausa - pause - Lanche*/
+.legenda{color: #ebc700;}
+.trPupura{background-color:  #7600c8; color: #fff;} /*pausa - pause - Banheiro*/
+.legenda1{color: #7600c8;}
+.trBege{background-color:  #dedac9; color: #000;} /*pausa - pause - Descanso*/
+.legenda2{color: #dedac9;}
+.trRoxo{background-color: #90C; color: #fff;} /*deslogado */
+.legenda3{color: #90C;}
+.trAzul{background-color: #06C; color: #fff;}/*em atendimento*/
+.legenda4{color: #06C;}
+.trAqua{background-color: #3cceed; color: #000;} /* em atendimento >= 5 min.*/
+.legenda5{color: #3cceed;}
+.trVerde{background-color: green; color: #fff;}/*disponivel*/
+.legenda6{color: green;}
+.trLaranja{background-color: #F90; color: #fff;}/*pausa Evento*/
+.legenda7{color: #F90;}
+.trVerdeAgua{background-color: #3cedca; color: #000;}/*Descompressão*/
+.legenda8{color: #3cedca;}
+.trVerdeLimao{background-color: #a4f721; color: #000;}/*Retorno*/
+.legenda9{color: #a4f721;}
+.trVerdeMusgo{background-color: #969f88; color: #fff;}/*Acordo*/
+.legenda10{color: #969f88;}
+.trLilas{background-color: #e200ea; color: #fff;}/*Intervalo-banco de horas*/
+.legenda11{color: #e200ea;}
+
+/*ERROR*/
+.alert-warning{background-color: #fdf0ab;}
+.alert-success{background-color: #80f188;}
+.alert-danger{background-color: #ff3b3b; color: #fddbda;}
+.alert-info{background-color: #67ccff; color: #124c69;}
+
+/*FORMULARIO*/
+input[type=radio] {
+    visibility: hidden;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+/*FORMATA LINKS*/
+a.del{color: red;}
+a.del:hover{color: #8f0000;}
+a.voltar{color: #00afef;}
+a.voltar:hover{color: #ccc;}
+a.monitor{color: #acd8ff;}
+
+/*FORMULARIOS*/
+#frm input[type=radio]:before {
+    content: " ";
+    background-color: #ccc;
+    display: inline-block;
+    margin-right: 15px;
+    width: 15px;
+    height: 15px;
+    border: 3px solid #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    visibility: visible;
+    box-shadow: 0 0 0px 2px #999;
+}
+
+#frm input[type=radio]:checked:before {
+    background-color: #ff3b3b;
+}
+
+/* CHECKBOX */
+#frm input[type=checkbox] {
+    visibility: hidden;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+#frm input[type=checkbox]:before {
+    content: " ";
+    display: inline-block;
+    margin-right: 25px;
+    width: 16px;
+    height: 16px;
+    visibility: visible;
+    border: 2px solid #999;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    line-height: 10px;
+    /*font-size: 15px;*/
+    /*text-align: center;*/
+    /*font-weight: bold;*/
+    color: #052;
+}
+
+#frm input[type=checkbox]:checked:before {
+    content: "\e013";
+    font-family: 'Glyphicons Halflings';
+    font-size: 17px;
+    color: #ff3b3b;
+}
+
+/*alteração para bootstrap*/
+.form-control{font-size: 16px; color: #01086b; font-weight: bold;}
+.hover-color > tbody > tr:hover{background-color: #C6E2FF;}
+
+/*FORMATA COPY*/
+.copy{margin: 10px 0; color: #0d1c61;}
+
+/*JANELA MODAL*/
+.modal-content{border-radius: 0;}
+.modal-header { background-color: #337ab7; color: #fff;}
+.modal-body{color: #757575;}
+
+/* NAVBAR E NAVBAR-BRAND */
+.navbar-brand{padding: 20px 20px;}
+.navbar-inverse{background-image:url(../images/fundo-topo1.png); background-size: 100%; background-color: #0d1c61; border-color: #0099cc; border-bottom-width: 4px;}
+.navbar-inverse .navbar-nav>li>a{color: #0bce64 ;} /*#00afef*/
+
+/*PAGINATOR*/
+/*.paginator{padding: 10px; background: #ced2d4; text-align: center}
+.paginator a, .paginator span{margin: 0 5px; padding: 3px 8px; font-size: 14px; color: #333; font-weight: 600}
+.paginator a:hover{background: #09f; color: #fff;}
+.paginator .atv{background: #333; color: #fff;}*/
+
+/*PAGINATOR*/
+.paginator{padding: 10px 10px 0 10px; /*background: #fff;*/ text-align: center}
+.paginator a, .paginator span{margin: 0 5px; border: 1px solid; padding: 3px 8px; font-size: 14px; color: #337ab7; font-weight: 600}
+.paginator a:hover{background: #00afef; color: #fff;}
+.paginator .active{background: #00afef; color: #fff;}
+.paginator li{ margin: 0; display: inline;}
+
+
+/*GRAFICO*/
+.fundoGrafico{ background-color: #fff;}
+
+.btnFormat{
+    color: #00afef; 
+    font-size: 20px;
+    line-height: 1;    
+}
+.btnFormat a:hover{
+    color: #fff;
+}
+
+
+/*Dashboards*/
+.blocos{width: 1240px; height: 114px; padding:20px 0 10px 0;}
+.bloco{width: 228px; float: left;}
+
+/*BORDAS*/
+.border1{border: 5px solid #337ab7;}
+.border2{border: 5px solid #8a2eb8;}
+.border3{border: 5px solid #109618;}
+.border3a{border: 3px solid #109618;}
+.border4{border: 5px solid #3366cc;}
+.border5{border: 5px solid #ff9900;}
+.border6{border: 5px solid #dc3912;}
+.border7{border: 5px solid #000;}
+.border8{border: 5px solid #800;}
+.border9{border: 5px solid #C90;} 
+.border10{border: 5px solid #663;} 
+.border11{border: 5px solid #3CC;} 
+
+.border1, .border2, .border3, .border3a, .border4, .border5, .border6, .border7, .border8, .border9, .border10, .border11{border-top: 0px ; border-bottom: 0px ;}
+
+
+
+/*TELA MEDIA*/
+@media (min-width: 768px){
+    .navbar-right{margin-right: 0; margin-top: 15px;}    
+}

@@ -1,0 +1,144 @@
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;  
+}
+
+body{margin: 0; padding: 0; background-color: #000; color: #fff;}
+
+.conteudo{        
+    text-align: center;
+    border: 2px solid #069;
+/*    margin-top: 45px;*/
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.tabless{
+    border: 1px solid;
+    border-collapse: collapse;    
+}
+.tabless .trc{
+    background-color: #4b7399;
+    height: 30px;
+    color: #fff;
+    border: 1px solid #4b7399;
+    border-bottom: 3px solid #FFBB00;  
+    font-size: 15px;
+/*    text-align: center;*/
+}
+.tabless .trc1 td{
+    background-color: #e4ecf2;
+    border: 1px solid #4b7399;
+    height: 30px;
+    color: #4b7399;
+    
+}
+.rodape{
+    text-align: center;
+}
+
+.top{
+    height: auto;
+    line-height: 70px;
+}
+.tit{
+    width: 100%;
+/*    float: left;*/
+    text-align: left;
+    font-size: 25px;
+    color: #006699;
+    font-size: 25px;
+} 
+
+.tH1 {text-align: center;}
+
+.bt{
+    width: 100%;
+/*    float: right;*/
+    text-align: left;
+    margin: 0 0 15px 0;    
+}
+
+.paginacao{
+/*    height: 40px;
+    line-height: 40px;  */
+
+}
+.lk, .lka{       
+    height: auto;
+    padding: 4px;
+    margin: 3px;
+}
+
+a.lk {
+    background-color: #4b7399;
+    text-decoration: none;
+    color: #FFF;
+}
+.lk:hover{
+    background-color: #e4ecf2;
+    color: #4b7399;
+}
+
+a.lka{
+    background-color: #e2e2e2;
+    text-decoration: none;
+    color: #4b7399; 
+}
+
+/*BLOCO BUSCA*/
+
+.locW{
+   height: 80px;
+}
+
+.loc{
+    height: 60px;
+/*    margin:5px 5px 5px 0;*/
+    padding: 10px;
+/*    border: 1px solid;*/
+  
+    line-height: 40px;
+    text-align: left;
+    
+}
+
+.loc1{
+    height: 40px;
+    margin:5px 5px 5px 0;
+    padding: 10px;
+    /*border: 1px solid;*/
+    float: left;
+    line-height: 40px;
+}
+
+#dataIni, #dataFim, #horaIni, #horaFim{
+    height: 35px;
+    font-family: arial;
+    color: #4b7399;
+    border: 2px solid;
+}
+#horaIni, #horaFim{
+    width: 110px;    
+}
+
+#btn, .nb{
+    height: 35px;
+    background-color: #4b7399; 
+    border: none;
+    border-bottom:3px solid #FFBB00;
+    color: #fff;
+    font-weight: bold;
+    line-height: 35px;
+    padding: 0 20px;
+}
+
+#btn:hover{
+    background-color: #7698b9;
+}
+
+.imgHome{
+    height: 100%;
+    background-color: #ccc;
+}
+

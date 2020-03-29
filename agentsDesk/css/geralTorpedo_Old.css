@@ -1,0 +1,97 @@
+/* 
+    Document   : geral css
+    Author     : KLEBER DE SOUZA
+    Description:
+        Formata o painel admin do projeto2016 KLSDESIGNER.
+*/
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%; 
+}
+
+body{margin: 0; padding: 0; background-color: #fff ; color: #000; font-family: 'Raleway', sans-serif;}
+
+.topo{
+    background-image: url(../../images/fundo-topo1.png);
+    background-size: 100%;
+    background-color: #ccc;
+    /*height: 79px;*/
+    /*border-bottom: #0099cc;*/
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.base{
+    height: 506px;
+}
+
+.base .at{
+    height: 100px;
+    width: 250px;
+    /*background-color: #ccc;*/  
+    color: #fff; 
+    position: absolute;
+    top: 30px;
+    left: 53px;
+}
+
+.base .cli{
+    height: 100px;
+    width: 250px;
+    /*background-color: #ccc;*/  
+    color: #fff; 
+    position: absolute;
+    top: 23px;
+    right: 35px;
+    text-align: center;
+}
+
+/*COR DE FUNDO*/
+.grAzul{background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);} 
+.grSeashore{background-image: linear-gradient(to top, #209cff 0%, #68e0cf 100%);} 
+.bkBranco{background-color: #fff;}
+
+/*CORES TEXTO*/
+.txtRed{color: red;}
+.txtVerde{color: #06b70d;}
+.txtOrange{color: #cc6d00;}
+.txtAzul{color: #337ab7;}
+.txtAzulC{color: #00afef;}
+.txtRoxo{color: #8a2eb8;}
+.txtblue{color: #006699;}
+.txtBranco{color: #fff;}
+
+/*POSIÇÃO TEXTO*/
+.txtCenter{text-align: center;}
+.txtLeft{text-align: left;}
+.txtRight{text-align: right;}
+
+/*TAMANHO DE FONTES*/
+.size10{font-size: 10px;}
+.size11{font-size: 11px;}
+.size12{font-size: 12px;}
+.size15{font-size: 15px;}
+.size18{font-size: 1.2em;}
+.size20{font-size: 1.3em;}
+.size30{font-size: 2em;}
+
+.mgTop{ margin-top: 20px; }
+.mgTop50{ margin-top: 50px; }
+.mgTop100{ margin-top: 100px; }
+
+/*CARDS*/
+.card{width: 100%;}
+.card-body{height: 340px;}
+
+
+/*FORMATA COPY*/
+.copy{margin: 10px 0; color: #fff;}
+
+.btClose{
+   top: 10px;
+   text-align: right;   
+   position: absolute;
+   right: 10px;
+}
+
