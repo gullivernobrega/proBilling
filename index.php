@@ -1,5 +1,6 @@
 <?php
-//Inicio2
+//Teste de Comentario
+
 session_start();
 date_default_timezone_set('America/Sao_Paulo');
 require('./_app/Config.inc.php');

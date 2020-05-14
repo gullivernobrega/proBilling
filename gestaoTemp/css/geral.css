@@ -1,0 +1,140 @@
+/* 
+    Document   : geral css
+    Author     : KLEBER DE SOUZA
+    Description:
+        Formata o painel admin do projeto2016 KLSDESIGNER.
+*/
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;  
+}
+
+body{margin: 0; padding: 0; background-color: #3e3e3e ; color: #fff;}
+
+/*CORES TEXTO*/
+.txtRed{color: red;}
+.txtVerde{color: #00f500;}
+
+/*POSIÇÃO TEXTO*/
+.txtCenter{text-align: center;}
+.txtLeft{text-align: left;}
+.txtRight{text-align: right;}
+
+/*TAMANHO DE FONTES*/
+.size10{font-size: 10px;}
+.size11{font-size: 11px;}
+.size12{font-size: 12px;}
+.size20{font-size: 20px;}
+
+/*CONFIG MENU*/
+.navbar-brand{height: auto;}
+#base{width: 100%; margin-top:80px;}
+.panel{background-color: #333; border-radius: 0; box-shadow: none; margin: 0 -20px;}
+.list-group-item:first-child{border-top-left-radius: 0; border-top-right-radius: 0; }
+/*.list-group-item-default{background-color: #222;}*/
+.list-group-item{background-color: #222; border: none; border-top: 1px solid #484848; border-bottom: 1px solid #484848;}
+a.list-group-item{color: #cacaca; }
+a.list-group-item:focus, a.list-group-item:hover{background-color: #9a9b9a;}
+a.list-group-item-sub{
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px; 
+    background-color: #333;
+    color: #fff; 
+    text-decoration: none;
+}
+a.list-group-item-sub:focus, a.list-group-item-sub:hover{background-color: #676662;}
+
+.glyphicon{margin-right: 5px;}
+
+/*CONTEUDO*/
+#conteudo{width: 100%; margin-bottom: 25px;}
+.well{background-color: #404040; border: none;}
+.panel-heading{border-top-left-radius: 0; border-top-right-radius: 0;}
+
+/*ERROR*/
+.alert-warning{background-color: #fdf0ab;}
+.alert-success{background-color: #80f188;}
+.alert-danger{background-color: #ff3b3b; color: #fddbda;}
+.alert-info{background-color: #67ccff; color: #124c69;}
+
+
+/*FORMULARIO*/
+ input[type=radio] {
+visibility: hidden;
+margin-right: 8px;
+cursor: pointer;
+}
+
+/*FORMATA LINKS*/
+a.del{color: red;}
+a.del:hover{color: #8f0000;}
+a.voltar{color: #737272;}
+a.voltar:hover{color: #ccc;}
+
+/*FORMULARIOS*/
+#frm input[type=radio]:before {
+content: " ";
+background-color: #ccc;
+display: inline-block;
+margin-right: 15px;
+width: 15px;
+height: 15px;
+border: 3px solid #fff;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+visibility: visible;
+box-shadow: 0 0 0px 2px #999;
+}
+
+#frm input[type=radio]:checked:before {
+background-color: #ff3b3b;
+}
+
+#frm input[type=checkbox] {
+visibility: hidden;
+margin-right: 8px;
+cursor: pointer;
+}
+
+#frm input[type=checkbox]:before {
+content: "0a0";
+display: inline-block;
+margin-right: 15px;
+width: 12px;
+height: 12px;
+visibility: visible;
+border: 2px dashed #999;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+line-height: 12px;
+font-size: 14px;
+text-align: center;
+font-weight: bold;
+color: #052;
+}
+
+#frm input[type=checkbox]:checked:before {
+content: "0d7";
+}
+
+/*alteração para bootstrap*/
+.form-control{font-size: 16px; color: #01086b; font-weight: bold;}
+.hover-color > tbody > tr:hover{background-color: #383838;}
+
+/*FORMATA COPY*/
+.copy{margin: 10px 0; color: #999;}
+
+/*JANELA MODAL*/
+.modal-content{border-radius: 0;}
+.modal-header { background-color: #337ab7;}
+.modal-body{color: #757575;}
+
+/*TELA MEDIA*/
+@media (min-width: 768px){
+    .navbar-right{margin-right: 0; margin-top: 15px;}    
+}
