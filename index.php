@@ -1,6 +1,7 @@
 <?php
 //Teste de Comentario
 //Teste 2
+//Teste3
 
 session_start();
 date_default_timezone_set('America/Sao_Paulo');
