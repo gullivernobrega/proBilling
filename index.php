@@ -1,12 +1,8 @@
 <?php
-//Teste de Comentario
-//Teste 2
-
 session_start();
 date_default_timezone_set('America/Sao_Paulo');
 require('./_app/Config.inc.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
