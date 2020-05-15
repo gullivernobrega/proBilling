@@ -16,7 +16,7 @@ $nivel = $user_nivel;
 <div class="container-fluid">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-user-md"></i> Painel de Atulização</h3>
+            <h3 class="panel-title"><i class="fa fa-user-md"></i> Painel de Atualização</h3>
         </div>
         <div class="panel-body">
             <div id="shieldui-grid1">
@@ -35,7 +35,7 @@ $nivel = $user_nivel;
                     extract($user);
                 endforeach;
                 
-                //DADOS DO FORMULÁRIO
+                //DADOS DO FORMUL�?RIO
                 if (isset($dados['userUpdate'])):
                     unset($dados['userUpdate']);
 

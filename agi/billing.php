@@ -5,8 +5,7 @@ if (function_exists('pcntl_signal')) {
 }
 
 spl_autoload_register(function ($class_name) {
-    require 'classes/'.$class_name.'.class.php';
-    
+    require 'classes/' . $class_name . '.class.php';
 });
 
 //Instanciando a Classe do asterisk
@@ -33,33 +32,38 @@ $rota = $router->router($dados);
 //Pegando DDD local do sistema.
 $ddd = '62';
 
+//Status Call
+$dialstatus = '';
 //Iniciando aplicação
 
-if (strlen($numeroDestino) == 12 || strlen($numeroDestino) == 9 ) {
+if (strlen($numeroDestino) == 12 || strlen($numeroDestino) == 9) {
     foreach ($rota['movel'] as $valueMovel) {
-        
-//Chamando classe que trata os numeros.
+
+        if ($dialstatus == 'ANSWERED' || $dialstatus == 'CANCEL' || $dialstatus == 'NO ANSWER') {
+            exit();
+        } elseif (empty($dialstatus) || $dialstatus == 'FAILED') {
+            //Chamando classe que trata os numeros.
 //Add prefixo, remove prefixo e retorna o número        
-        $prefix = new prefix_billing();
-        $numCall = $prefix->prefix($valueMovel,$numeroDestino);
- 
+            $prefix = new prefix_billing();
+            $numCall = $prefix->prefix($valueMovel, $numeroDestino);
+
 //**********************************||************************************************************************//
 //                      Iniciando interação com asterisk.                                                     //   
 //**********************************||************************************************************************//        
-        
+
             $interacao = new Interacao_Asterisk();
-            $interacao->Noop_Asterisk($agi, $numCall, $numeroDestino, 'celular',$valueMovel);
-        
-     
+            $interacao->Noop_Asterisk($agi, $numCall, $numeroDestino, 'celular', $valueMovel);
+
+
 //      Tratando Unique-ID
             $unique = $interacao->Unique_Asterisk($unique);
-            
-            $numeroDestino = (strlen($numeroDestino) == 9 ? '0'. $ddd . $numeroDestino : $numeroDestino);
+
+            $numeroDestino = (strlen($numeroDestino) == 9 ? '0' . $ddd . $numeroDestino : $numeroDestino);
             $agi->exec("set", "CDR(userfield)={$unique}_{$data}_{$numeroDestino}");
 
 //          Setando no CDR(Tipo)
             $agi->exec("set", "CDR(tipo)=Brasil-Movel");
-            
+
 //          Organizando local e pasta para gravação de chamadas.
             $arquivoGravacao = "/var/spool/asterisk/monitor/$dataPasta/$unique" . '_' . "$data" . '_' . "$numeroDestino" . '.wav';
 
@@ -69,7 +73,7 @@ if (strlen($numeroDestino) == 12 || strlen($numeroDestino) == 9 ) {
 
 //          Executando o comando Dial  
             $agi->exec("Dial", "$valueMovel/$numCall,60,tT");
-            
+
 //**********************************||************************************************************************//
 //                      Status da chamada após o comando Dial.                                                //   
 //**********************************||************************************************************************//
@@ -80,7 +84,7 @@ if (strlen($numeroDestino) == 12 || strlen($numeroDestino) == 9 ) {
             $tronco = explode('/', $valueMovel);
             $tronco = $tronco[1];
             $cdrInsert = new Cdr();
-            $dadosCdr = $cdrInsert->ExeCdr($agi,NULL,NULL,$tronco);
+            $dadosCdr = $cdrInsert->ExeCdr($agi, NULL, NULL, $tronco);
 
 //          Armazenando no banco.
             $Query = "$dadosCdr";
@@ -92,33 +96,36 @@ if (strlen($numeroDestino) == 12 || strlen($numeroDestino) == 9 ) {
                 $agi->exec("Hangup", "");
                 break;
             }
-        
+        }
     }
-    
-}elseif (strlen($numeroDestino) == 11 || strlen($numeroDestino) == 8) {
+} elseif (strlen($numeroDestino) == 11 || strlen($numeroDestino) == 8) {
     foreach ($rota['fixo'] as $valueFixo) {
-      //Chamando classe que trata os numeros.
+
+        if ($dialstatus == 'ANSWERED' || $dialstatus == 'CANCEL' || $dialstatus == 'NO ANSWER') {
+            exit();
+        } elseif (empty($dialstatus) || $dialstatus == 'FAILED') {
+//Chamando classe que trata os numeros.
 //Add prefixo, remove prefixo e retorna o número        
-        $prefix = new prefix_billing();
-        $numCall = $prefix->prefix($valueFixo,$numeroDestino);
- 
+            $prefix = new prefix_billing();
+            $numCall = $prefix->prefix($valueFixo, $numeroDestino);
+
 //**********************************||************************************************************************//
 //                      Iniciando interação com asterisk.                                                     //   
 //**********************************||************************************************************************//        
-        
+
             $interacao = new Interacao_Asterisk();
-            $interacao->Noop_Asterisk($agi, $numCall, $numeroDestino, 'Fixo',$valueFixo);
-        
-     
+            $interacao->Noop_Asterisk($agi, $numCall, $numeroDestino, 'Fixo', $valueFixo);
+
+
 //      Tratando Unique-ID
             $unique = $interacao->Unique_Asterisk($unique);
-            
-            $numeroDestino = (strlen($numeroDestino) == 8 ? '0'. $ddd . $numeroDestino : $numeroDestino);
+
+            $numeroDestino = (strlen($numeroDestino) == 8 ? '0' . $ddd . $numeroDestino : $numeroDestino);
             $agi->exec("set", "CDR(userfield)={$unique}_{$data}_{$numeroDestino}");
 
 //          Setando no CDR(Tipo)
             $agi->exec("set", "CDR(tipo)=Brasil-Fixo");
-            
+
 //          Organizando local e pasta para gravação de chamadas.
             $arquivoGravacao = "/var/spool/asterisk/monitor/$dataPasta/$unique" . '_' . "$data" . '_' . "$numeroDestino" . '.wav';
 
@@ -128,7 +135,7 @@ if (strlen($numeroDestino) == 12 || strlen($numeroDestino) == 9 ) {
 
 //          Executando o comando Dial  
             $agi->exec("Dial", "$valueFixo/$numCall,60,tT");
-            
+
 //**********************************||************************************************************************//
 //                      Status da chamada após o comando Dial.                                                //   
 //**********************************||************************************************************************//
@@ -139,7 +146,7 @@ if (strlen($numeroDestino) == 12 || strlen($numeroDestino) == 9 ) {
             $tronco = explode('/', $valueFixo);
             $tronco = $tronco[1];
             $cdrInsert = new Cdr();
-            $dadosCdr = $cdrInsert->ExeCdr($agi,NULL,NULL,$tronco);
+            $dadosCdr = $cdrInsert->ExeCdr($agi, NULL, NULL, $tronco);
 
 //          Armazenando no banco.
             $Query = "$dadosCdr";
@@ -150,43 +157,45 @@ if (strlen($numeroDestino) == 12 || strlen($numeroDestino) == 9 ) {
             }if ($dialstatus == 'ANSWERED' || $dialstatus == 'CANCEL') {
                 $agi->exec("Hangup", "");
                 break;
-            }  
+            }
+        }
     }
-}elseif (strlen($numeroDestino) == 4) {
-    
+} elseif (strlen($numeroDestino) == 4) {
+
     $agi->exec("set", "CDR(tipo)=Internas");
     $agi->exec("Dial", "SIP/$numeroDestino,60,tT");
 
     $cdrInsert = new Cdr();
-    $dadosCdr = $cdrInsert->ExeCdr($agi,NULL,NULL,'proBilling');
+    $dadosCdr = $cdrInsert->ExeCdr($agi, NULL, NULL, 'proBilling');
     $conn = new Conn();
     $Query = "$dadosCdr";
     $conn->Inserir($Query);
-    
-    
-}elseif (strlen($numeroDestino) > 12) {
-     foreach ($rota['inter'] as $valueInter) {
-      //Chamando classe que trata os numeros.
-//Add prefixo, remove prefixo e retorna o número        
-        $prefix = new prefix_billing();
-        $numCall = $prefix->prefix($valueInter,$numeroDestino);
- 
+} elseif (strlen($numeroDestino) > 12) {
+    foreach ($rota['inter'] as $valueInter) {
+        if ($dialstatus == 'ANSWERED' || $dialstatus == 'CANCEL' || $dialstatus == 'NO ANSWER') {
+            exit();
+        } elseif (empty($dialstatus) || $dialstatus == 'FAILED') {
+    //Chamando classe que trata os numeros.
+    //Add prefixo, remove prefixo e retorna o número        
+            $prefix = new prefix_billing();
+            $numCall = $prefix->prefix($valueInter, $numeroDestino);
+
 //**********************************||************************************************************************//
 //                      Iniciando interação com asterisk.                                                     //   
 //**********************************||************************************************************************//        
-        
+
             $interacao = new Interacao_Asterisk();
-            $interacao->Noop_Asterisk($agi, $numCall, $numeroDestino, 'Internacional',$valueInter);
-        
-     
+            $interacao->Noop_Asterisk($agi, $numCall, $numeroDestino, 'Internacional', $valueInter);
+
+
 //      Tratando Unique-ID
             $unique = $interacao->Unique_Asterisk($unique);
-            
+
             $agi->exec("set", "CDR(userfield)={$unique}_{$data}_{$numeroDestino}");
 
 //          Setando no CDR(Tipo)
             $agi->exec("set", "CDR(tipo)=Internacional");
-            
+
 //          Organizando local e pasta para gravação de chamadas.
             $arquivoGravacao = "/var/spool/asterisk/monitor/$dataPasta/$unique" . '_' . "$data" . '_' . "$numeroDestino" . '.wav';
 
@@ -196,7 +205,7 @@ if (strlen($numeroDestino) == 12 || strlen($numeroDestino) == 9 ) {
 
 //          Executando o comando Dial  
             $agi->exec("Dial", "$valueInter/$numCall,60,tT");
-            
+
 //**********************************||************************************************************************//
 //                      Status da chamada após o comando Dial.                                                //   
 //**********************************||************************************************************************//
@@ -207,7 +216,7 @@ if (strlen($numeroDestino) == 12 || strlen($numeroDestino) == 9 ) {
             $tronco = explode('/', $valueInter);
             $tronco = $tronco[1];
             $cdrInsert = new Cdr();
-            $dadosCdr = $cdrInsert->ExeCdr($agi,NULL,NULL,$tronco);
+            $dadosCdr = $cdrInsert->ExeCdr($agi, NULL, NULL, $tronco);
 
 //          Armazenando no banco.
             $Query = "$dadosCdr";
@@ -218,9 +227,9 @@ if (strlen($numeroDestino) == 12 || strlen($numeroDestino) == 9 ) {
             }if ($dialstatus == 'ANSWERED' || $dialstatus == 'CANCEL') {
                 $agi->exec("Hangup", "");
                 break;
-            }  
+            }
+        }
     }
-    
 }
 
 
