@@ -59,7 +59,7 @@ while (true) {
                 $audioTts1 = $value[$i]['campanha_tts_1'];
                 $audioTts1 = utf8_encode($audioTts1);
                 $audioTts1 = str_replace(" ", "%20", $audioTts1);
-                $url = "http://201.48.244.67/tts/index.php?text=$audioTts1";
+                $url = "http://localhost/tts-aws/index.php?text=$audioTts1";
                 $pasta = "/var/www/html/proBilling/sounds/tts1-$nomeArq.mp3";
                 file_put_contents($pasta, file_get_contents($url));
                 shell_exec("lame --decode /var/www/html/proBilling/sounds/tts1-$nomeArq.mp3 - | sox -v 2.0 -t wav - -t wav -b 16 -r 8000 -c 1 /var/www/html/proBilling/sounds/tts1-$nomeArq.wav");
@@ -69,7 +69,7 @@ while (true) {
                 $audioTts2 = $value[$i]['campanha_tts_2'];
                 $audioTts2 = utf8_encode($audioTts2);
                 $audioTts2 = str_replace(" ", "%20", $audioTts2);
-                $url = "http://201.48.244.67/tts/index.php?text=$audioTts2";
+                $url = "http://localhost/tts-aws/index.php?text=$audioTts2";
                 $pasta = "/var/www/html/proBilling/sounds/tts2-$nomeArq.mp3";
                 file_put_contents($pasta, file_get_contents($url));
                 shell_exec("lame --decode /var/www/html/proBilling/sounds/tts2-$nomeArq.mp3 - | sox -v 2.0 -t wav - -t wav -b 16 -r 8000 -c 1 /var/www/html/proBilling/sounds/tts2-$nomeArq.wav");
@@ -82,7 +82,7 @@ while (true) {
                 $nomeArq = str_replace(" ", "-", $value[$i]['campanha_nome']);
                 $audioTts1 = $value[$i]['campanha_tts_1'];
                 $audioTts1 = str_replace(" ", "%20", $audioTts1);
-                $url = "http://201.48.244.67/tts/index.php?text=$audioTts1";
+                $url = "http://localhost/tts-aws/index.php?text=$audioTts1";
                 $pasta = "/var/www/html/proBilling/sounds/tts1-$nomeArq.mp3";
                 file_put_contents($pasta, file_get_contents($url));
                 shell_exec("lame --decode /var/www/html/proBilling/sounds/tts1-$nomeArq.mp3 - | sox -v 2.0 -t wav - -t wav -b 16 -r 8000 -c 1 /var/www/html/proBilling/sounds/tts1-$nomeArq.wav");

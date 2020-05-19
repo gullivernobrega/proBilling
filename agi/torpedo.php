@@ -55,7 +55,7 @@ if ($amdStatus == 'MACHINE') {
         if (!empty($nome && $audio2)) {
 
             $nometts = str_replace(" ", "%20", $nome);
-            $url = "http://201.48.244.67/tts/index.php?text=$nometts";
+            $url = "http://localhost/tts-aws/index.php?text=$nometts";
             $nome = str_replace(" ", "-", $nome);
             $pasta = "/var/www/html/proBilling/sounds/nome-$nome.mp3";
             file_put_contents($pasta, file_get_contents($url));
@@ -169,7 +169,7 @@ if ($amdStatus == 'MACHINE') {
     } elseif (strlen($numeroDestino) == 11) {
         if (!empty($nome && $audio2)) {
             $nometts = str_replace(" ", "%20", $nome);
-            $url = "http://201.48.244.67/tts/index.php?text=$nometts";
+            $url = "http://localhost/tts-aws/index.php?text=$nometts";
             $nome = str_replace(" ", "-", $nome);
             $pasta = "/var/www/html/proBilling/sounds/nome-$nome.mp3";
             file_put_contents($pasta, file_get_contents($url));
