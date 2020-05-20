@@ -100,6 +100,7 @@ endif;
                                 extract($userlogin);
                                 if ($user_nivel != "1"):
                                     echo '<li><a href="painel.php?exe=users/users"><i class="fa fa-users"></i> Usuarios</a></li>';
+                                    echo '<li><a href="painel.php?exe=config/config"><i class="fa fa-cogs"></i> Configurações</a></li>';
                                 endif;
                                 ?>
                                 <li class="divider"></li>

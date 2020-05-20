@@ -5,7 +5,7 @@ extract($_SESSION['userlogin']);
 <!--<div class="row">-->
 <!--<div class="col-lg-12">-->
 <div class="page-header">            
-    <h1>Olá <?php echo "{$user_nome}"; ?>, <small>atualize seu perfíl!</small></h1>
+    <h1>Olá <?php echo "{$user_nome}"; ?>, <small>configure seu sistema!</small></h1>
 </div>       
 <!--</div>-->
 
@@ -13,7 +13,7 @@ extract($_SESSION['userlogin']);
 <div class="container-fluid">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-user-md"></i> Painel de Atualização</h3>
+            <h3 class="panel-title"><i class="fa fa-user-md"></i> Parametros do sistema</h3>
         </div>
         <div class="panel-body">
             <div id="shieldui-grid1">
@@ -71,62 +71,13 @@ extract($_SESSION['userlogin']);
                 <form role="form" class="form-horizontal txtblue" name="formUser" action="" method="post" id="frm">                          
 
                     <div class="form-group">    
-                        <label for="user_name" class="col-sm-2 control-label">Nome</label>
+                        <label for="ddd" class="col-sm-2 control-label">DDD-Local</label>
                         <div class="col-xs-8">                                    
-                            <input type="text" class="form-control" name="user_nome" id="user_nome" placeholder="Nome Usuário" value="<?php echo $user_nome; ?>" required autofocus>
-                            <p class="help-block"><small>Informe o Nome completo do Usuário.</small></p>
+                            <input type="text" class="form-control" name="ddd" id="user_nome" placeholder="Exemplo: São Paulo ddd = 11" value="<?php echo $user_nome; ?>" required autofocus>
+                            <p class="help-block"><small>Informe DDD local</small></p>
                         </div>
                     </div>
-                    <div class="form-group">  
-                        <label for="user_email" class="col-sm-2 control-label">E-mail</label>
-                        <div class="col-xs-8">
-                            <input type="email" class="form-control" name="user_email" id="user_email" placeholder="E-mail Usuário"  value="<?php echo $user_email; ?>" required >
-                            <p class="help-block"><small>Informe um e-mail válido.</small></p>
-                        </div>
-                    </div>
-
-                    <div class="form-group">    
-                        <label for="user_ramal" class="col-sm-2 control-label">Ramal Escuta</label>
-                        <div class="col-xs-3">                                    
-                            <input 
-                                type="text" 
-                                class="form-control" 
-                                name="user_ramal" id="user_ramal" 
-                                placeholder="Ramal de Escuta" 
-                                value="<?php
-                                if (!empty($user_ramal)): echo $user_ramal;
-                                endif;
-                                ?>" 
-                                maxlength="4"
-                                pattern = "[0-9]+$"
-                                required                                 
-                                >
-                            <p class="help-block"><small>Informe um ramal para escuta 4 digitos.</small></p>
-                        </div>
-                    </div>
-
-                    <div class="form-group">     
-                        <label for="user_login" class="col-sm-2 control-label">Login</label>
-                        <div class="col-lg-3">
-                            <input type="text" class="form-control" name="user_login" id="user_login" placeholder="Login Usuário" value="<?php echo $user_login; ?>" required>
-                            <p class="help-block"><small>Informe um Login de Usuário.</small></p>
-                        </div>
-
-                    </div>
-                    <div class="form-group"> 
-                        <label for="user_senha" class="col-sm-2 control-label">Senha</label>
-                        <div class="col-lg-3">
-                            <input type="password" class="form-control" name="user_senha" id="user_senha" placeholder="Senha Usuário" pattern = ".{6,12}">
-                            <p class="help-block"><small>Informe a senha com minimo 6 caracters.</small></p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="replica" class="col-sm-2 control-label">Confirma Senha</label>
-                        <div class="col-lg-3">
-                            <input type="password" class="form-control" name="replica" id="replica" placeholder="Repita aSenha" >
-                            <p class="help-block"><small>Repita a senha.</small></p>
-                        </div>
-                    </div>
+                    
                     <?php
                     if ($user_nivel == "3"):
                         ?>
@@ -148,27 +99,42 @@ extract($_SESSION['userlogin']);
                         <?php
                     elseif ($user_nivel == "2"):
                         ?>
-
-                        <div class="form-group">
-                            <label for="user_nivel" class="col-sm-2 control-label">Nivel de acesso</label>
+                        
+                    <div class="form-group">
+                            <label for="tts" class="col-sm-2 control-label">TTS - Provedor</label>
                             <div class="col-lg-4">
                                 <label class="radio-inline">
-                                    <input type="radio" name="user_nivel" id="nivel1" value="3" > Suporte
+                                    <input type="radio" name="tts" id="provedor" value="aws" > AWS
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="user_nivel" id="nivel2" value="2" checked="checked"> Administrador
+                                    <input type="radio" name="tts" id="provedor" value="ibm" > IBM
                                 </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="user_nivel" id="nivel3" value="1"> Usuário
-                                </label>    
                             </div>
                         </div>
+                    
+                    
+                    <div class="form-group">     
+                        <label for="id_tts" class="col-sm-2 control-label">Login</label>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control" name="id_tts" id="id_tts" placeholder="TTS-id" value="<?php // echo $id_tts; ?>">
+                            <p class="help-block"><small>Informe sua chave ID.</small></p>
+                        </div>
+
+                    </div>
+                    <div class="form-group"> 
+                        <label for="secret_tts" class="col-sm-2 control-label">Senha</label>
+                        <div class="col-lg-3">
+                            <input type="password" class="form-control" name="secret_tts" id="secret_tts" placeholder="Secret TTS">
+                            <p class="help-block"><small>Informe sua chave tts secret.</small></p>
+                        </div>
+                    </div>
+
                         <?php
                     endif;
                     ?>
                     <div class="form-group">
                         <input type="hidden" name="user_status" value="S">
-                        <!--<input type="hidden" name="user_registrado" value="<?php //echo date("Y-m-d H:i:s");             ?>">-->
+                        <!--<input type="hidden" name="user_registrado" value="<?php //echo date("Y-m-d H:i:s");            ?>">-->
                     </div>
                     <div class="well txtCenter">
                         <input type="submit" class="btn btn-success" name="userEdit" value="Salvar Alteração">
@@ -254,9 +220,9 @@ extract($_SESSION['userlogin']);
                     <span class="field">Nível:</span>
                     <select name = "user_level" title = "Selecione o nível de usuário" required >
                         <option value = "">Selecione o Nível</option>
-                        <option value = "1" <?php //if ($user_level == 1) echo 'selected="selected"';                ?>>User</option>
-                        <option value="2" <?php //if ($user_level == 2) echo 'selected="selected"';                ?>>Editor</option>
-                        <option value="3" <?php //if ($user_level == 3) echo 'selected="selected"';                ?>>Admin</option>
+                        <option value = "1" <?php //if ($user_level == 1) echo 'selected="selected"';               ?>>User</option>
+                        <option value="2" <?php //if ($user_level == 2) echo 'selected="selected"';               ?>>Editor</option>
+                        <option value="3" <?php //if ($user_level == 3) echo 'selected="selected"';               ?>>Admin</option>
                     </select>
                 </label>
 
