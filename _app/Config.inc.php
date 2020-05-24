@@ -39,7 +39,7 @@ define('DIR', dirname(__FILE__));
 // AUTO LOAD DE CLASSES ##################### 
 function __autoload($Class) {
     // cDir responsavel pelos diretorios das classes;
-    $cDir = array('Conn', 'Helpers', 'Models');
+    $cDir = array('Conn', 'Helpers', 'Models', 'vendor');
     $iDir = null;
     foreach ($cDir as $dirName) {        
         if (! $iDir && file_exists(DIR . DIRECTORY_SEPARATOR . $dirName . DIRECTORY_SEPARATOR . $Class . ".class.php") && !is_dir($dirName)) {

@@ -1,0 +1,15 @@
+{
+    "name": "aws-polly/probilling",
+    "description": "Integracao Polly Amazon para proBilling",
+    "authors": [
+        {
+            "name": "Gulliver Nobrega",
+            "email": "gulliver@brazistelecom.com.br"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "aws/aws-sdk-php": "^3.138"
+        
+    }
+}

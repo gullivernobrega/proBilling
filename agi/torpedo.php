@@ -3,9 +3,10 @@
 if (function_exists('pcntl_signal')) {
     pcntl_signal(SIGHUP, SIG_IGN);
 }
-require_once 'classes/phpagi.php';
-require_once 'classes/Cdr.class.php';
-require_once 'classes/Conn.class.php';
+
+spl_autoload_register(function ($class_name) {
+    require 'classes/' . $class_name . '.class.php';
+});
 
 $agi = new AGI();
 $unique = $agi->request['agi_uniqueid'];
@@ -54,11 +55,12 @@ if ($amdStatus == 'MACHINE') {
     if (strlen($numeroDestino) == 12) {
         if (!empty($nome && $audio2)) {
 
-            $nometts = str_replace(" ", "%20", $nome);
-            $url = "http://localhost/tts-aws/index.php?text=$nometts";
+            $tts = new tts();  
+            $tts->Exectts($nome);
             $nome = str_replace(" ", "-", $nome);
             $pasta = "/var/www/html/proBilling/sounds/nome-$nome.mp3";
-            file_put_contents($pasta, file_get_contents($url));
+//            file_put_contents($pasta, file_get_contents($url));
+            file_put_contents($pasta, $tts->getResult());
             $nome = "/var/www/html/proBilling/sounds/nome-$nome";
             shell_exec("lame --decode $nome.mp3 - | sox -v 2.0 -t wav - -t wav -b 16 -r 8000 -c 1 $nome.wav");
             shell_exec("rm -rf $nome.mp3");
@@ -168,11 +170,12 @@ if ($amdStatus == 'MACHINE') {
 
     } elseif (strlen($numeroDestino) == 11) {
         if (!empty($nome && $audio2)) {
-            $nometts = str_replace(" ", "%20", $nome);
-            $url = "http://localhost/tts-aws/index.php?text=$nometts";
+            $tts = new tts();  
+            $tts->Exectts($nome);
+            $nome = str_replace(" ", "-", $nome);
             $nome = str_replace(" ", "-", $nome);
             $pasta = "/var/www/html/proBilling/sounds/nome-$nome.mp3";
-            file_put_contents($pasta, file_get_contents($url));
+            file_put_contents($pasta, $tts->getResult());
             $nome = "/var/www/html/proBilling/sounds/nome-$nome";
             shell_exec("lame --decode $nome.mp3 - | sox -v 2.0 -t wav - -t wav -b 16 -r 8000 -c 1 $nome.wav");
             shell_exec("rm -rf $nome.mp3");
