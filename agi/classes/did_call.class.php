@@ -119,59 +119,79 @@ class did_call {
         } elseif ($this->dado['did_destino_func'] == "URA") {
 
             $Query = "SELECT * FROM ura WHERE ura_nome = '{$this->dado['did_destino']}'";
+            $agi->exec("NoOp", "$Query");
             $uraOp = $conn->Consultar($Query);
-            $uraAudio = $uraOp['ura_audio'];
+            $uraOp = $uraOp[0];
+            $uraAudio = '/var/www/html/proBilling/arquivos/' . $uraOp['ura_audio'];
+            $agi->exec("NoOp", "Audio:$uraAudio");
+            $agi->exec("Answer", "");
             if (isset($uraOp['op_t'])) {
                 $uraTOut = $uraOp['op_t'];
             }
+
             for ($i = 1; $i <= 3; $i++) {
 
                 if ($i == 1) {
                     $get_resp = $agi->get_data($uraAudio, 7000, 1);
                     $get_resp = $get_resp['result'];
                     $agi->exec("NoOp", "$get_resp");
+                    if (!empty($get_resp) && $get_resp != '-1') {
+                        $testOpcoes = 'op_' . $get_resp;
+                        if (empty($uraOp["'$testOpcoes'"])) {
+                            $agi->exec("NoOp", "OpcaoInValida");
+                            $agi->exec("Playback", "/var/www/html/proBilling/arquivos/opcaoinvalida");
+                            $get_resp = Null;
+                        }
+                    }
                 } elseif ($i > 1 && empty($get_resp)) {
                     $agi->exec("Playback", "/var/www/html/proBilling/arquivos/desculpe");
                     $get_resp = $agi->get_data($uraAudio, 5000, 1);
                     $get_resp = $get_resp['result'];
                     $agi->exec("NoOp", "$get_resp");
+                    
+                    if ($get_resp != '-1') {
+                        $testOpcoes = 'op_' . $get_resp;
+                        if (empty($uraOp["'$testOpcoes'"])) {
+                            $agi->exec("NoOp", "OpcaoInValida");
+                            $agi->exec("Playback", "/var/www/html/proBilling/arquivos/opcaoinvalida");
+                            $get_resp = Null;
+                        }
+                    }
                 }
             }
-            if ($get_resp >= 1) :
+        }
 
-                $get_resp = int($get_resp);
-                switch ($get_resp) {
-                    case 1:
-                        $agi->exec("Dial", "{$uraOp['op_1']},60,tT");
-                        break;
-                    case 2:
-                        $agi->exec("Dial", "{$uraOp['op_2']},60,tT");
-                        break;
-                    case 3:
-                        $agi->exec("Dial", "{$uraOp['op_3']},60,tT");
-                        break;
-                    case 4:
-                        $agi->exec("Dial", "{$uraOp['op_4']},60,tT");
-                        break;
-                    case 5:
-                        $agi->exec("Dial", "{$uraOp['op_5']},60,tT");
-                        break;
-                    case 6:
-                        $agi->exec("Dial", "{$uraOp['op_6']},60,tT");
-                        break;
-                    case 7:
-                        $agi->exec("Dial", "{$uraOp['op_7']},60,tT");
-                        break;
-                    case 8:
-                        $agi->exec("Dial", "{$uraOp['op_8']},60,tT");
-                        break;
-                    case 9:
-                        $agi->exec("Dial", "{$uraOp['op_9']},60,tT");
-                        break;
-                    default :
-                        $agi->exec("Dial", "{$uraTOut},60,tT");
-                }
-            endif;
+
+        switch ($get_resp) {
+            case '1':
+                $agi->exec("Dial", "{$uraOp['op_1']},60,tT");
+                break;
+            case '2':
+                $agi->exec("Dial", "{$uraOp['op_2']},60,tT");
+                break;
+            case '3':
+                $agi->exec("Dial", "{$uraOp['op_3']},60,tT");
+                break;
+            case '4':
+                $agi->exec("Dial", "{$uraOp['op_4']},60,tT");
+                break;
+            case '5':
+                $agi->exec("Dial", "{$uraOp['op_5']},60,tT");
+                break;
+            case '6':
+                $agi->exec("Dial", "{$uraOp['op_6']},60,tT");
+                break;
+            case '7':
+                $agi->exec("Dial", "{$uraOp['op_7']},60,tT");
+                break;
+            case '8':
+                $agi->exec("Dial", "{$uraOp['op_8']},60,tT");
+                break;
+            case '9':
+                $agi->exec("Dial", "{$uraOp['op_9']},60,tT");
+                break;
+            default :
+                $agi->exec("Dial", "{$uraTOut},60,tT");
         }
     }
 
@@ -202,7 +222,6 @@ class did_call {
             unlink($this->arquivoGravacao);
         }if ($this->dialstatus == 'ANSWERED' || $this->dialstatus == 'CANCEL' || $this->dialstatus == 'BUSY') {
             $agi->exec("Hangup", "");
-            
         }
     }
 
