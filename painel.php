@@ -133,7 +133,7 @@ endif;
                                 <a href="#rotas" class="list-group-item list-group-item-default" data-toggle="collapse" data-parent="#MainMenu"><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span> Gerenciamento <i class="fa fa-caret-down"></i></a>
                                 <div class="collapse" id="rotas">
                                     <!--Audio-->
-                                    <a href="painel.php?exe=gerenciamento/audios/lista" class="list-group-item-sub"><i class="fa fa-cc"></i> Audio</a>
+                                    <a href="painel.php?exe=gerenciamento/audios/lista" class="list-group-item-sub"><i class="fa fa-file-audio-o"></i> Audio</a>
                                     <!--Agents-->
                                     <a href="painel.php?exe=gerenciamento/agentes/lista" class="list-group-item-sub"><i class="fa fa-user-circle-o"></i> Agentes</a>
                                     <!--Ramais-->
@@ -151,6 +151,8 @@ endif;
                                     </div>-->
                                     <!--Rotas-->
                                     <a href="painel.php?exe=gerenciamento/rotas/create" class="list-group-item-sub"><i class="fa fa-random"></i> Rotas</a>
+                                    <!--URA-->
+                                    <a href="painel.php?exe=gerenciamento/ura/lista" class="list-group-item-sub"><i class="fa fa-cogs"></i> Ura</a>
                                     <!--Filas-->
                                     <a href="painel.php?exe=gerenciamento/filas/lista" class="list-group-item-sub"><i class="fa fa-th"></i> Filas</a>
                                     <!--Did-->
