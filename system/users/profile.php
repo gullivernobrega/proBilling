@@ -1,4 +1,5 @@
 <?php
+var_dump($_SESSION);
 extract($_SESSION['userlogin']);
 ?>
 <!--<div class="row">-->
@@ -12,7 +13,7 @@ extract($_SESSION['userlogin']);
 <div class="container-fluid">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-user-md"></i> Painel de Atulização</h3>
+            <h3 class="panel-title"><i class="fa fa-user-md"></i> Painel de Atualização</h3>
         </div>
         <div class="panel-body">
             <div id="shieldui-grid1">
@@ -20,7 +21,7 @@ extract($_SESSION['userlogin']);
                 <!--<div class="col-lg-10">-->
                 <?php
                 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-                               
+
                 if (isset($dados['userEdit'])):
 
                     if (empty($dados['user_senha'])):
@@ -51,6 +52,7 @@ extract($_SESSION['userlogin']);
                             $user->ExeUpdate($user_id, $dados);
 
                             if ($user->getResultado()):
+
                                 $error = $user->getError();
                                 KLErro($error[0], $error[1]);
                             else:
@@ -82,7 +84,7 @@ extract($_SESSION['userlogin']);
                             <p class="help-block"><small>Informe um e-mail válido.</small></p>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">    
                         <label for="user_ramal" class="col-sm-2 control-label">Ramal Escuta</label>
                         <div class="col-xs-3">                                    
@@ -91,7 +93,10 @@ extract($_SESSION['userlogin']);
                                 class="form-control" 
                                 name="user_ramal" id="user_ramal" 
                                 placeholder="Ramal de Escuta" 
-                                value="<?php if(!empty($user_ramal)): echo $user_ramal; endif;?>" 
+                                value="<?php
+                                if (!empty($user_ramal)): echo $user_ramal;
+                                endif;
+                                ?>" 
                                 maxlength="4"
                                 pattern = "[0-9]+$"
                                 required                                 
@@ -143,6 +148,7 @@ extract($_SESSION['userlogin']);
                         <?php
                     elseif ($user_nivel == "2"):
                         ?>
+
                         <div class="form-group">
                             <label for="user_nivel" class="col-sm-2 control-label">Nivel de acesso</label>
                             <div class="col-lg-4">
@@ -162,7 +168,7 @@ extract($_SESSION['userlogin']);
                     ?>
                     <div class="form-group">
                         <input type="hidden" name="user_status" value="S">
-                        <!--<input type="hidden" name="user_registrado" value="<?php //echo date("Y-m-d H:i:s");         ?>">-->
+                        <!--<input type="hidden" name="user_registrado" value="<?php //echo date("Y-m-d H:i:s");             ?>">-->
                     </div>
                     <div class="well txtCenter">
                         <input type="submit" class="btn btn-success" name="userEdit" value="Salvar Alteração">
@@ -248,9 +254,9 @@ extract($_SESSION['userlogin']);
                     <span class="field">Nível:</span>
                     <select name = "user_level" title = "Selecione o nível de usuário" required >
                         <option value = "">Selecione o Nível</option>
-                        <option value = "1" <?php //if ($user_level == 1) echo 'selected="selected"';            ?>>User</option>
-                        <option value="2" <?php //if ($user_level == 2) echo 'selected="selected"';            ?>>Editor</option>
-                        <option value="3" <?php //if ($user_level == 3) echo 'selected="selected"';            ?>>Admin</option>
+                        <option value = "1" <?php //if ($user_level == 1) echo 'selected="selected"';                ?>>User</option>
+                        <option value="2" <?php //if ($user_level == 2) echo 'selected="selected"';                ?>>Editor</option>
+                        <option value="3" <?php //if ($user_level == 3) echo 'selected="selected"';                ?>>Admin</option>
                     </select>
                 </label>
 

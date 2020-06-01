@@ -4,8 +4,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once 'classes/Conn.class.php';
-require_once 'classes/phpagi-asmanager.php';
+spl_autoload_register(function ($class_name) {
+    require 'classes/' . $class_name . '.class.php';
+});
 
 $today = date("Y-m-d H:i:s");
 
@@ -64,20 +65,20 @@ $value = $conn->Consultar($Query);
                 $nomeArq = str_replace(" ", "-", $value[$i]['campanha_nome']);
                 $audioTts1 = $value[$i]['campanha_tts_1'];
                 $audioTts1 = utf8_encode($audioTts1);
-                $audioTts1 = str_replace(" ", "%20", $audioTts1);
-                $url = "http://201.48.244.67/tts/index.php?text=$audioTts1";
+                $tts = new tts();  
+                $tts->Exectts($audioTts1);
                 $pasta = "/var/www/html/proBilling/sounds/tts1-$nomeArq.mp3";
-                file_put_contents($pasta, file_get_contents($url));
+                file_put_contents($pasta, $tts->getResult());
                 shell_exec("lame --decode /var/www/html/proBilling/sounds/tts1-$nomeArq.mp3 - | sox -v 2.0 -t wav - -t wav -b 16 -r 8000 -c 1 /var/www/html/proBilling/sounds/tts1-$nomeArq.wav");
                 shell_exec("rm -rf /var/www/html/proBilling/sounds/tts1-$nomeArq.mp3");
 
 
                 $audioTts2 = $value[$i]['campanha_tts_2'];
                 $audioTts2 = utf8_encode($audioTts2);
-                $audioTts2 = str_replace(" ", "%20", $audioTts2);
-                $url = "http://201.48.244.67/tts/index.php?text=$audioTts2";
+                $tts = new tts();  
+                $tts->Exectts($audioTts2);
                 $pasta = "/var/www/html/proBilling/sounds/tts2-$nomeArq.mp3";
-                file_put_contents($pasta, file_get_contents($url));
+                file_put_contents($pasta, $tts->getResult());
                 shell_exec("lame --decode /var/www/html/proBilling/sounds/tts2-$nomeArq.mp3 - | sox -v 2.0 -t wav - -t wav -b 16 -r 8000 -c 1 /var/www/html/proBilling/sounds/tts2-$nomeArq.wav");
                 shell_exec("rm -rf /var/www/html/proBilling/sounds/tts2-$nomeArq.mp3");
 
@@ -87,10 +88,10 @@ $value = $conn->Consultar($Query);
             } elseif ($value[$i]['campanha_tts_1'] && !$value[$i]['campanha_tts_2']) {
                 $nomeArq = str_replace(" ", "-", $value[$i]['campanha_nome']);
                 $audioTts1 = $value[$i]['campanha_tts_1'];
-                $audioTts1 = str_replace(" ", "%20", $audioTts1);
-                $url = "http://201.48.244.67/tts/index.php?text=$audioTts1";
+                $tts = new tts();  
+                $tts->Exectts($audioTts1);
                 $pasta = "/var/www/html/proBilling/sounds/tts1-$nomeArq.mp3";
-                file_put_contents($pasta, file_get_contents($url));
+                file_put_contents($pasta, $tts->getResult());
                 shell_exec("lame --decode /var/www/html/proBilling/sounds/tts1-$nomeArq.mp3 - | sox -v 2.0 -t wav - -t wav -b 16 -r 8000 -c 1 /var/www/html/proBilling/sounds/tts1-$nomeArq.wav");
                 shell_exec("rm -rf /var/www/html/proBilling/sounds/tts1-$nomeArq.mp3");
                 $arrAudio[] = "/var/www/html/proBilling/sounds/tts1-$nomeArq";

@@ -175,8 +175,8 @@ if (strlen($numeroDestino) == 12 || strlen($numeroDestino) == 9) {
         if ($dialstatus == 'ANSWERED' || $dialstatus == 'CANCEL' || $dialstatus == 'NO ANSWER') {
             exit();
         } elseif (empty($dialstatus) || $dialstatus == 'FAILED') {
-    //Chamando classe que trata os numeros.
-    //Add prefixo, remove prefixo e retorna o número        
+            //Chamando classe que trata os numeros.
+            //Add prefixo, remove prefixo e retorna o número        
             $prefix = new prefix_billing();
             $numCall = $prefix->prefix($valueInter, $numeroDestino);
 
