@@ -27,6 +27,8 @@ endif;
 
                 if (isset($Data["campanhaUpdate"])):
                     unset($Data["campanhaUpdate"]);
+                    var_dump($Data);
+                    exit();
 
                     if (!empty($Data['campanha_destino_tipo']) && $Data['campanha_destino_tipo'] == 'IAX' && !empty($Data['ramalIax'])):
                         unset($Data['ramalSip'], $Data['queue'], $Data['group'], $Data['custom']);

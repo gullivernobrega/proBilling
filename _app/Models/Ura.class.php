@@ -81,9 +81,12 @@ class Ura {
 
         $this->Data = array_map('strip_tags', $this->Data);
         $this->Data = array_map('trim', $this->Data);
-
+        
         $ura_nome = $this->Data['ura_nome'];
         $ura_audio = $this->Data['ura_audio'];
+        $ura_audio_invalida = $this->Data['ura_audio_invalida'];
+        $ura_audio_tentativa = $this->Data['ura_audio_tentativa'];
+        $ura_tentativa = (int) $this->Data['ura_tentativa'];
         $ura_op_1= $this->Data['ura_op_1'];
         $ura_op_2= $this->Data['ura_op_2'];
         $ura_op_3 = $this->Data['ura_op_3'];
@@ -98,7 +101,10 @@ class Ura {
 
         $this->Data['ura_nome'] = $ura_nome;
         $this->Data['ura_audio'] = $ura_audio;
-            
+        $this->Data['ura_audio_invalida'] = $ura_audio_invalida;
+        $this->Data['ura_audio_tentativa'] = $ura_audio_tentativa;
+        $this->Data['ura_tentativa'] = $ura_tentativa;
+                    
         $this->Data['op_1'] = $ura_op_1;
         $this->Data['op_2'] = $ura_op_2;
         $this->Data['op_3'] = $ura_op_3;
@@ -110,6 +116,8 @@ class Ura {
         $this->Data['op_9'] = $ura_op_9;
         
         $this->Data['op_t'] = $ura_timeout;
+        
+        
         
        
     }

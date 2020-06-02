@@ -122,6 +122,8 @@ class did_call {
             $agi->exec("NoOp", "$Query");
             $uraOp = $conn->Consultar($Query);
             $uraOp = $uraOp[0];
+            $opInvalida = $uraOp['ura_audio_invalida'];
+            $opTentativa = $uraOp['ura_audio_tentativa'];
             $uraAudio = '/var/www/html/proBilling/arquivos/' . $uraOp['ura_audio'];
             $agi->exec("NoOp", "Audio:$uraAudio");
             $agi->exec("Answer", "");
@@ -129,7 +131,7 @@ class did_call {
                 $uraTOut = $uraOp['op_t'];
             }
 
-            for ($i = 1; $i <= 3; $i++) {
+            for ($i = 1; $i <= (int)$uraOp['ura_tentativa']; $i++) {
 
                 if ($i == 1) {
                     $get_resp = $agi->get_data($uraAudio, 7000, 1);
@@ -139,12 +141,12 @@ class did_call {
                         $testOpcoes = 'op_' . $get_resp;
                         if (empty($uraOp["'$testOpcoes'"])) {
                             $agi->exec("NoOp", "OpcaoInValida");
-                            $agi->exec("Playback", "/var/www/html/proBilling/arquivos/opcaoinvalida");
+                            $agi->exec("Playback", "$opInvalida");
                             $get_resp = Null;
                         }
                     }
                 } elseif ($i > 1 && empty($get_resp)) {
-                    $agi->exec("Playback", "/var/www/html/proBilling/arquivos/desculpe");
+                    $agi->exec("Playback", "$opTentativa");
                     $get_resp = $agi->get_data($uraAudio, 5000, 1);
                     $get_resp = $get_resp['result'];
                     $agi->exec("NoOp", "$get_resp");
@@ -153,7 +155,7 @@ class did_call {
                         $testOpcoes = 'op_' . $get_resp;
                         if (empty($uraOp["'$testOpcoes'"])) {
                             $agi->exec("NoOp", "OpcaoInValida");
-                            $agi->exec("Playback", "/var/www/html/proBilling/arquivos/opcaoinvalida");
+                            $agi->exec("Playback", "$opInvalida");
                             $get_resp = Null;
                         }
                     }
