@@ -122,8 +122,8 @@ class did_call {
             $agi->exec("NoOp", "$Query");
             $uraOp = $conn->Consultar($Query);
             $uraOp = $uraOp[0];
-            $opInvalida = $uraOp['ura_audio_invalida'];
-            $opTentativa = $uraOp['ura_audio_tentativa'];
+            $opInvalida = '/var/www/html/proBilling/arquivos/' . $uraOp['ura_audio_invalida'];
+            $opTentativa = '/var/www/html/proBilling/arquivos/' . $uraOp['ura_audio_tentativa'];
             $uraAudio = '/var/www/html/proBilling/arquivos/' . $uraOp['ura_audio'];
             $agi->exec("NoOp", "Audio:$uraAudio");
             $agi->exec("Answer", "");
