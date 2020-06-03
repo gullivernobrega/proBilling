@@ -161,7 +161,6 @@ class did_call {
            
          /*
          * Pegando se foi digitado algo ou não e tomando decisões
-         * 
          */
 
             if (!empty($get_resp && $ver == true)) {
