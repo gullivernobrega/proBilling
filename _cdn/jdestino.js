@@ -55,10 +55,10 @@ $(document).ready(function () {
             $('#queue').hide();
         }
 
-        if (this.value === "GROUP") {
-            $('#group').fadeTo(1000, 1.0);
+        if (this.value === "URA") {
+            $('#ura-id').fadeTo(1000, 1.0);
         } else {
-            $('#group').hide();
+            $('#ura-id').hide();
         }
 
         if (this.value === "CUSTOM") {
