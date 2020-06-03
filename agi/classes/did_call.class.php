@@ -135,7 +135,6 @@ class did_call {
         
          /*
          * Fazendo um loop com número de tentativas da URA
-         * 
          */
             
             for ($i = 1; $i <= $ve; $i++) {
