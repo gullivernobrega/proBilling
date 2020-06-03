@@ -122,78 +122,56 @@ class did_call {
             $agi->exec("NoOp", "$Query");
             $uraOp = $conn->Consultar($Query);
             $uraOp = $uraOp[0];
+            $new = array_filter($uraOp);
+            $ve = (int) $uraOp['ura_tentativa'];
             $opInvalida = '/var/www/html/proBilling/arquivos/' . $uraOp['ura_audio_invalida'];
             $opTentativa = '/var/www/html/proBilling/arquivos/' . $uraOp['ura_audio_tentativa'];
             $uraAudio = '/var/www/html/proBilling/arquivos/' . $uraOp['ura_audio'];
             $agi->exec("NoOp", "Audio:$uraAudio");
             $agi->exec("Answer", "");
-            if (isset($uraOp['op_t'])) {
-                $uraTOut = $uraOp['op_t'];
+            if (isset($new['op_t'])) {
+                $uraTOut = $new['op_t'];
             }
+        
+         /*
+         * Fazendo um loop com número de tentativas da URA
+         */
+            
+            for ($i = 1; $i <= $ve; $i++) {
 
-            for ($i = 1; $i <= (int)$uraOp['ura_tentativa']; $i++) {
+                $get_resp = $agi->get_data($uraAudio, 3000, 1);
+                $get_resp = $get_resp['result'];
+                $agi->exec("NoOp", "$get_resp");
 
-                if ($i == 1) {
-                    $get_resp = $agi->get_data($uraAudio, 7000, 1);
-                    $get_resp = $get_resp['result'];
-                    $agi->exec("NoOp", "$get_resp");
-                    if (!empty($get_resp) && $get_resp != '-1') {
-                        $testOpcoes = 'op_' . $get_resp;
-                        if (empty($uraOp["'$testOpcoes'"])) {
-                            $agi->exec("NoOp", "OpcaoInValida");
-                            $agi->exec("Playback", "$opInvalida");
-                            $get_resp = Null;
-                        }
-                    }
-                } elseif ($i > 1 && empty($get_resp)) {
+
+                if (!empty($get_resp)) {
+                    $destKey = 'op_' . $get_resp;
+                    $ver = array_key_exists($destKey, $new);
+                }
+
+                if ($i < $ve && empty($get_resp)) {
                     $agi->exec("Playback", "$opTentativa");
-                    $get_resp = $agi->get_data($uraAudio, 5000, 1);
-                    $get_resp = $get_resp['result'];
-                    $agi->exec("NoOp", "$get_resp");
-                    
-                    if ($get_resp != '-1') {
-                        $testOpcoes = 'op_' . $get_resp;
-                        if (empty($uraOp["'$testOpcoes'"])) {
-                            $agi->exec("NoOp", "OpcaoInValida");
-                            $agi->exec("Playback", "$opInvalida");
-                            $get_resp = Null;
-                        }
-                    }
+                }
+//
+                if ($i < $ve && !empty($get_resp) && $ver == false) {
+                    $agi->exec("NoOp", "OpcaoInValida");
+                    $agi->exec("Playback", "$opInvalida");
                 }
             }
-        }
+           
+         /*
+         * Pegando se foi digitado algo ou não e tomando decisões
+         */
 
-
-        switch ($get_resp) {
-            case '1':
-                $agi->exec("Dial", "{$uraOp['op_1']},60,tT");
-                break;
-            case '2':
-                $agi->exec("Dial", "{$uraOp['op_2']},60,tT");
-                break;
-            case '3':
-                $agi->exec("Dial", "{$uraOp['op_3']},60,tT");
-                break;
-            case '4':
-                $agi->exec("Dial", "{$uraOp['op_4']},60,tT");
-                break;
-            case '5':
-                $agi->exec("Dial", "{$uraOp['op_5']},60,tT");
-                break;
-            case '6':
-                $agi->exec("Dial", "{$uraOp['op_6']},60,tT");
-                break;
-            case '7':
-                $agi->exec("Dial", "{$uraOp['op_7']},60,tT");
-                break;
-            case '8':
-                $agi->exec("Dial", "{$uraOp['op_8']},60,tT");
-                break;
-            case '9':
-                $agi->exec("Dial", "{$uraOp['op_9']},60,tT");
-                break;
-            default :
+            if (!empty($get_resp && $ver == true)) {
+                $destKey = 'op_' . $get_resp;
+                $agi->exec("Dial", "{$uraOp["'$destKey'"]},60,tT");
+            } elseif (empty($get_resp)) {
                 $agi->exec("Dial", "{$uraTOut},60,tT");
+            } elseif (!empty($get_resp) && $ver == false) {
+                $agi->exec("Playback", "$opInvalida");
+                $agi->exec("Dial", "{$uraTOut},60,tT");
+            }
         }
     }
 
