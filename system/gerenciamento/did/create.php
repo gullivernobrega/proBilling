@@ -111,99 +111,7 @@ endif;
                         <label for="ramal" class="col-sm-2 control-label">Destino</label>
 
                         <div class="col-lg-4">
-                            <?php
-                            //if (!empty($Data['tipo']) && $Data['tipo'] == "IAX"):
-                            ?>
-                            <!--                            <label class="radio-inline">
-                                                            <input onClick="return mudacor('1');" type="radio" name="tipo" id="iax"  value="IAX" checked="checked" > IAX
-                                                        </label>
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="sip"  value="SIP"> SIP
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fqueue"  value="QUEUE"> QUEUE
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fgroup"  value="GROUP"> GROUP
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fcustom"  value="CUSTOM"> CUSTOM
-                                                        </label> -->
-                            <?php
-                            //elseif (!empty($Data['tipo']) && $Data['tipo'] == "SIP"):
-                            ?>
-                            <!--                            <label class="radio-inline">
-                                                            <input onClick="return mudacor('1');" type="radio" name="tipo" id="iax"  value="IAX" > IAX
-                                                        </label>
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="sip"  value="SIP" checked="checked" > SIP
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fqueue"  value="QUEUE"> QUEUE
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fgroup"  value="GROUP"> GROUP
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fcustom"  value="CUSTOM"> CUSTOM
-                                                        </label-->
-                            <?php
-                            //elseif (!empty($Data['tipo']) && $Data['tipo'] == "QUEUE"):
-                            ?>
-                            <!--                            <label class="radio-inline">
-                                                            <input onClick="return mudacor('1');" type="radio" name="tipo" id="iax"  value="IAX" > IAX
-                                                        </label>
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="sip"  value="SIP" > SIP
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fqueue"  value="QUEUE" checked="checked"> QUEUE
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fgroup"  value="GROUP"> GROUP
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fcustom"  value="CUSTOM"> CUSTOM
-                                                        </label                            -->
-                            <?php
-                            // elseif (!empty($Data['tipo']) && $Data['tipo'] == "GROUP"):
-                            ?>
-                            <!--                            <label class="radio-inline">
-                                                            <input onClick="return mudacor('1');" type="radio" name="tipo" id="iax"  value="IAX" > IAX
-                                                        </label>
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="sip"  value="SIP" > SIP
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fqueue"  value="QUEUE" > QUEUE
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fgroup"  value="GROUP" checked="checked"> GROUP
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fcustom"  value="CUSTOM"> CUSTOM
-                                                        </label                            -->
-                            <?php
-                            //elseif (!empty($Data['tipo']) && $Data['tipo'] == "CUSTOM"):
-                            ?>
-                            <!--                            <label class="radio-inline">
-                                                            <input onClick="return mudacor('1');" type="radio" name="tipo" id="iax"  value="IAX" > IAX
-                                                        </label>
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="sip"  value="SIP" > SIP
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fqueue"  value="QUEUE" > QUEUE
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fgroup"  value="GROUP" > GROUP
-                                                        </label>                                
-                                                        <label class="radio-inline">
-                                                            <input onClick="return mudacor('2');" type="radio" name="tipo" id="fcustom"  value="CUSTOM" checked="checked"> CUSTOM
-                                                        </label                            -->
-                            <?php
-                            //else:
-                            ?>
+                            
                             <label class="radio-inline">
                                 <input onClick="return mudacor('1');" type="radio" name="tipo" id="iax"  value="IAX" > IAX
                             </label>
@@ -214,7 +122,7 @@ endif;
                                 <input onClick="return mudacor('2');" type="radio" name="tipo" id="fqueue"  value="QUEUE"> QUEUE
                             </label>                                
                             <label class="radio-inline">
-                                <input onClick="return mudacor('2');" type="radio" name="tipo" id="fgroup"  value="GROUP"> GROUP
+                                <input onClick="return mudacor('2');" type="radio" name="tipo" id="fgroup"  value="URA"> GROUP
                             </label>                                
                             <label class="radio-inline">
                                 <input onClick="return mudacor('2');" type="radio" name="tipo" id="fcustom"  value="CUSTOM"> CUSTOM
@@ -316,9 +224,33 @@ endif;
                             </div>
                         </div>
 
-                        <!--DESTINO GROUP-->
-                        <div id="group" style="display: none;">
-                            group
+                        <!--DESTINO URA-->
+                        <div id="ura-id" style="display: none;">
+                           <div class="col-xs-3">
+                                <select class="form-control" name="ura" id="ura-id">
+                                    <option value="">URA</option>
+                                    <?php
+                                    $read = new Read;
+                                    $read->ExeRead("ura");
+
+                                    if (!$read->getResult()):
+                                        echo '<option disabled="disabled" value="NULL">Cadastre antes uma URA!</option>';
+                                    else:
+                                        foreach ($read->getResult() as $value):
+                                            //passa o id e o tipo 
+                                            echo "<option value=\"{$value['ura_nome']}\" ";
+
+                                            if (!empty($ura_nome) == $value['ura_nome']):
+                                                echo ' selected = "selected" ';
+                                            endif;
+
+                                            echo ">{$value['ura_nome']}</option>";
+                                        endforeach;
+                                    endif;
+                                    ?>               
+                                </select> 
+                                <!--<p class="help-block"><small>Informe o Ramal Queue.</small></p>-->
+                            </div>
                         </div>
 
                         <!--DESTINO CUSTOM-->

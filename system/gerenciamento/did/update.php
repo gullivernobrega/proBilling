@@ -51,16 +51,6 @@ endif;
                         KLErro("Ops, Informe a hora inicial e final!", KL_ERROR);
                     endif;
 
-//                    if (empty($Data['did_hora_s_ini']) || empty($Data['did_hora_s_fim'])):                    
-//                        unset($Data['did_hora_s_ini'], $Data['did_hora_s_fim']);
-//                    endif;
-//
-//                    if (empty($Data['did_hora_d_ini']) || empty($Data['did_hora_d_fim'])):    
-//                        unset($Data['did_hora_d_ini'], $Data['did_hora_d_fim']);
-//                    endif;
-                    //VERIFICO SE EXITE O AUDIO GSM
-                    //$Data['did_arquivo'] = (!empty($_FILES['did_arquivo']['tmp_name']) ? $_FILES['did_arquivo'] : null);
-
                     $update = new Did;
                     $update->ExeUpdate($did_id, $Data);
 
@@ -360,7 +350,7 @@ endif;
                                 <!--<p class="help-block"><small>Informe o Ramal Queue.</small></p>-->
                             </div>
                         </div>
-                        <!--DESTINO GROUP-->
+                        <!--DESTINO URA-->
                         <div id="ura-id" style="<?php echo (!empty($Data['ura']) ? 'display: block;' : 'display: none;'); ?>" >
                             <div class="col-xs-3">
                                 <select class="form-control" name="ura" id="ura-id">

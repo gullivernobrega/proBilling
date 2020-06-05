@@ -103,11 +103,11 @@ class Did {
             $tiporamal = "$ramal";
             unset($this->Data['queue']);
             
-        elseif ($tipo == 'GROUP'):      
+        elseif ($tipo == 'URA'):      
             
-            $ramal = $this->Data['group'];
-            $tiporamal = "$tipo/$ramal";
-            unset($this->Data['group']);
+            $ramal = $this->Data['ura'];
+            $tiporamal = "$ramal";
+            unset($this->Data['ura']);
             
         elseif ($tipo == 'CUSTOM'):       
             
