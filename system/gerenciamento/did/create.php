@@ -28,23 +28,23 @@ endif;
                     unset($Data["didCreate"]);                    
                     
                     if (!empty($Data['tipo']) && $Data['tipo'] == 'IAX' && !empty($Data['ramalIax'])):
-                        unset($Data['ramalSip'], $Data['queue'], $Data['group'], $Data['custom']);
+                        unset($Data['ramalSip'], $Data['queue'], $Data['ura'], $Data['custom']);
                     endif;
 
                     if (!empty($Data['tipo']) && $Data['tipo'] == 'SIP' && !empty($Data['ramalSip'])):
-                        unset($Data['ramalIax'], $Data['queue'], $Data['group'], $Data['custom']);
+                        unset($Data['ramalIax'], $Data['queue'], $Data['ura'], $Data['custom']);
                     endif;
 
                     if (!empty($Data['tipo']) && $Data['tipo'] == 'QUEUE' && !empty($Data['queue'])):
-                        unset($Data['ramalIax'], $Data['ramalSip'], $Data['group'], $Data['custom']);
+                        unset($Data['ramalIax'], $Data['ramalSip'], $Data['ura'], $Data['custom']);
                     endif;
 
-                    if (!empty($Data['tipo']) && $Data['tipo'] == 'GROUP' && !empty($Data['group'])):
+                    if (!empty($Data['tipo']) && $Data['tipo'] == 'URA' && !empty($Data['ura'])):
                         unset($Data['ramalIax'], $Data['ramalSip'], $Data['queue'], $Data['custom']);
                     endif;
 
                     if (!empty($Data['tipo']) && $Data['tipo'] == 'CUSTOM' && !empty($Data['custom'])):
-                        unset($Data['ramalIax'], $Data['ramalSip'], $Data['queue'], $Data['group']);
+                        unset($Data['ramalIax'], $Data['ramalSip'], $Data['queue'], $Data['ura']);
                     endif;
 
                     if (empty($Data['did_hora_ss_ini']) && empty($Data['did_hora_ss_fim'])):
@@ -122,7 +122,7 @@ endif;
                                 <input onClick="return mudacor('2');" type="radio" name="tipo" id="fqueue"  value="QUEUE"> QUEUE
                             </label>                                
                             <label class="radio-inline">
-                                <input onClick="return mudacor('2');" type="radio" name="tipo" id="fgroup"  value="URA"> GROUP
+                                <input onClick="return mudacor('2');" type="radio" name="tipo" id="fgroup"  value="URA"> URA
                             </label>                                
                             <label class="radio-inline">
                                 <input onClick="return mudacor('2');" type="radio" name="tipo" id="fcustom"  value="CUSTOM"> CUSTOM
