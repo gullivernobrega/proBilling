@@ -10,7 +10,6 @@ endif;
     <h1>Did <small>Cadastro!</small></h1>
 </div>       
 <!--</div>-->
-
 <!--<div class="row">-->
 <div class="container-fluid">
     <div class="panel panel-primary">
