@@ -50,7 +50,10 @@ foreach ($dados as $dado) {
         $did->exeDID($agi, $conn, $cdr, $unique, $numeroArquivo, $tronco, $data, $dado);
     } elseif ($numeroEntrada == $dado['did_origem'] && $diaSemana == 7 && $horaAtual >= $dado['did_hora_d_ini'] && $horaAtual <= $dado['did_hora_d_fim']) {
         $did->exeDID($agi, $conn, $cdr, $unique, $numeroArquivo, $tronco, $data, $dado);
-    }
+    } elseif ($numeroEntrada == $dado['did_origem']) {
+        $agi->exec("Playback", "/var/www/html/proBilling/arquivos/horariodeatendimento");
+    
+}
 }
 
 
