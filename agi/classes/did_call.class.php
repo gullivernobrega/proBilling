@@ -132,17 +132,24 @@ class did_call {
             if (isset($new['op_t'])) {
                 $uraTOut = $new['op_t'];
             }
-        
-         /*
-         * Fazendo um loop com número de tentativas da URA
-         */
-            
+
+            /*
+             * Fazendo um loop com número de tentativas da URA
+             */
+
             for ($i = 1; $i <= $ve; $i++) {
 
-                $get_resp = $agi->get_data($uraAudio, 3000, 1);
-                $get_resp = $get_resp['result'];
-                $agi->exec("NoOp", "$get_resp");
+                if ($i == 1) {
+                    $get_resp = $agi->get_data($uraAudio, 3000, 1);
+                    $get_resp = $get_resp['result'];
+                    $agi->exec("NoOp", "$get_resp");
+                }
 
+                if ($i > 1 && $ver == false) {
+                    $get_resp = $agi->get_data($uraAudio, 3000, 1);
+                    $get_resp = $get_resp['result'];
+                    $agi->exec("NoOp", "$get_resp");
+                }
 
                 if (!empty($get_resp)) {
                     $destKey = 'op_' . $get_resp;
@@ -158,14 +165,29 @@ class did_call {
                     $agi->exec("Playback", "$opInvalida");
                 }
             }
-           
-         /*
-         * Pegando se foi digitado algo ou não e tomando decisões
-         */
+
+
+            /*
+             * Pegando se foi digitado algo ou não e tomando decisões
+             */
 
             if (!empty($get_resp && $ver == true)) {
+
                 $destKey = 'op_' . $get_resp;
-                $agi->exec("Dial", "{$uraOp["'$destKey'"]},60,tT");
+                $ret = $uraOp[$destKey];
+                $tecn = strstr($ret, '/', true);
+                $agi->exec("NoOp", "TECN=$tecn");
+
+                if ($tecn == 'SIP') {
+                    $agi->exec("Dial", "$ret,60,tT");
+                } elseif ($tecn == 'QUEUE') {
+                    $agi->exec("Answer", "");
+                    $q = explode('/', $ret);
+                    $dest = $q[1];
+                    $agi->exec("Queue", "$dest,tT");
+                } elseif ($tecn == 'URA') {
+                    $agi->exec("Dial", "$dest,60,tT");
+                }
             } elseif (empty($get_resp)) {
                 $agi->exec("Dial", "{$uraTOut},60,tT");
             } elseif (!empty($get_resp) && $ver == false) {
