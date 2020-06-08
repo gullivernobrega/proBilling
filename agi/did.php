@@ -50,10 +50,17 @@ foreach ($dados as $dado) {
         $did->exeDID($agi, $conn, $cdr, $unique, $numeroArquivo, $tronco, $data, $dado);
     } elseif ($numeroEntrada == $dado['did_origem'] && $diaSemana == 7 && $horaAtual >= $dado['did_hora_d_ini'] && $horaAtual <= $dado['did_hora_d_fim']) {
         $did->exeDID($agi, $conn, $cdr, $unique, $numeroArquivo, $tronco, $data, $dado);
-    } elseif ($numeroEntrada == $dado['did_origem']) {
-        $agi->exec("Playback", "/var/www/html/proBilling/arquivos/horariodeatendimento");
+    } elseif ($numeroEntrada == $dado['did_origem'] && $diaSemana >= 1 && $diaSemana <= 5) {
+        $fora = "/var/www/html/proBilling/arquivos/" . $dado['did_arquivo_ss']; 
+        $agi->exec("Playback", "$fora");
     
-}
+    } elseif ($numeroEntrada == $dado['did_origem'] && $diaSemana == 6) {
+        $fora = "/var/www/html/proBilling/arquivos/" . $dado['did_arquivo_s']; 
+        $agi->exec("Playback", "$fora");
+    } elseif ($numeroEntrada == $dado['did_origem'] && $diaSemana >= 1) {
+        $fora = "/var/www/html/proBilling/arquivos/" . $dado['did_arquivo_d']; 
+        $agi->exec("Playback", "$fora");
+    }
 }
 
 
