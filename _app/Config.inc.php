@@ -2,7 +2,7 @@
 // IP do servidor ####################
 define("IP", $_SERVER['SERVER_ADDR']);
 
-// CONFIGURAÇÕES DO SITE ####################
+// CONFIGURAÇÕES DO SITE ######################
 define('HOST', 'localhost');
 define('USER', 'root');
 define('PASS', 'proBilling');
