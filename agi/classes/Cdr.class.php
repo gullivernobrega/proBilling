@@ -36,17 +36,21 @@ class Cdr {
     private $insertCdr;
     
 
-    public function ExeCdr($agi, $tempoFalado = NULL, $agent = NULL, $tronco = NULL, $number = NULL) {
+    public function ExeCdr($agi, $tempoFalado = NULL, $agent = NULL, $tronco = NULL, $number = NULL, $src = NULL) {
 
         $cdrCallerId = $agi->get_variable("CDR(clid)");
         $this->cdrCallerId = $cdrCallerId['data'];
 
         if (!empty($agent)) {
             $this->cdrSrc = $agent;
+        } elseif (!empty($src)) {
+            $this->cdrSrc = $src;
         } else {
-            $cdrSrc = $agi->get_variable("CDR(src)");
-            $this->cdrSrc = $cdrSrc['data'];
+          $cdrSrc = $agi->get_variable("CDR(src)");
+            $this->cdrSrc = $cdrSrc['data'];  
         }
+            
+        
 
         if (!empty($number)){
             $this->cdrDst = $number;

@@ -145,6 +145,8 @@ allow={$this->Data['sip_codec3']}
 quality={$this->Data['sip_qualifily']}
 context=probilling
 callerid={$this->Data['sip_callerid']}
+callgroup=1
+pickupgroup=1
         ";
     }
 
@@ -170,6 +172,8 @@ allow={$sip_codec3}
 quality={$sip_qualifily}
 context=probilling
 callerid={$sip_callerid}
+callgroup=1
+pickupgroup=1
         ";
         endforeach;
     }
