@@ -17,9 +17,9 @@ class router_billing {
     
     public function router($param) {
         
-        $rota['fixo'] = array("{$param[rota_tronco_tipo_fixo_m]}/{$param[rota_tronco_fixo_m]}", "{$param[rota_tronco_tipo_fixo_b1]}/{$param[rota_tronco_fixo_b1]}", "{$param[rota_tronco_tipo_fixo_b2]}" / "{$param[rota_tronco_fixo_b2]}");
-        $rota['movel'] = array("{$param[rota_tronco_tipo_movel_m]}/{$param[rota_tronco_movel_m]}", "{$param[rota_tronco_tipo_movel_b1]}/{$param[rota_tronco_movel_b1]}", "{$param[rota_tronco_tipo_movel_b2]}" / "{$param[rota_tronco_movel_b2]}");
-        $rota['inter'] = array("{$param[rota_tronco_tipo_inter_m]}/{$param[rota_tronco_inter_m]}", "{$param[rota_tronco_tipo_inter_b1]}/{$param[rota_tronco_inter_b1]}", "{$param[rota_tronco_tipo_inter_b2]}" / "{$param[rota_tronco_inter_b2]}");
+        $rota['fixo'] = array("{$param['rota_tronco_tipo_fixo_m']}/{$param['rota_tronco_fixo_m']}", "{$param['rota_tronco_tipo_fixo_b1']}/{$param['rota_tronco_fixo_b1']}", "{$param['rota_tronco_tipo_fixo_b2']}" / "{$param['rota_tronco_fixo_b2']}");
+        $rota['movel'] = array("{$param['rota_tronco_tipo_movel_m']}/{$param['rota_tronco_movel_m']}", "{$param['rota_tronco_tipo_movel_b1']}/{$param['rota_tronco_movel_b1']}", "{$param['rota_tronco_tipo_movel_b2']}" / "{$param['rota_tronco_movel_b2']}");
+        $rota['inter'] = array("{$param['rota_tronco_tipo_inter_m']}/{$param['rota_tronco_inter_m']}", "{$param['rota_tronco_tipo_inter_b1']}/{$param['rota_tronco_inter_b1']}", "{$param['rota_tronco_tipo_inter_b2']}" / "{$param['rota_tronco_inter_b2']}");
         //Limpando indice de array vazio
         $rota['fixo'] = array_filter($rota['fixo']);
         $rota['movel'] = array_filter($rota['movel']);

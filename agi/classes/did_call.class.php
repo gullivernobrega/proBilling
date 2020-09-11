@@ -23,6 +23,7 @@ class did_call {
     private $arquivoGravacao;
     private $tempoFalado;
     private $dialstatus;
+    
 
     public function exeDID($agi, $conn, $cdr, $unique, $numeroArquivo, $tronco, $data, $dado) {
 
@@ -116,6 +117,7 @@ class did_call {
         } elseif ($this->dado['did_destino_func'] == "CUSTOM") {
             $agi->exec("Answer", "");
             $agi->exec("Dial", "{$this->dado['did_destino']},60,tT");
+                        
         } elseif ($this->dado['did_destino_func'] == "URA") {
 
             $Query = "SELECT * FROM ura WHERE ura_nome = '{$this->dado['did_destino']}'";
@@ -211,7 +213,12 @@ class did_call {
         if (!empty($this->tempoFalado)) {
             $dadosCdr = $cdr->ExeCdr($agi, $this->tempoFalado, NULL, $this->tronco);
         } else {
-            $dadosCdr = $cdr->ExeCdr($agi, NULL, NULL, $this->tronco);
+            if ($this->dado['did_destino_func'] == "CUSTOM") {
+               $dadosCdr = $cdr->ExeCdr($agi, NULL, NULL, $this->tronco, NULL, $this->numeroArquivo); 
+            } else {
+                $dadosCdr = $cdr->ExeCdr($agi, NULL, NULL, $this->tronco);  
+            }
+            
         }
         $Query = "$dadosCdr";
         $conn->Inserir($Query);

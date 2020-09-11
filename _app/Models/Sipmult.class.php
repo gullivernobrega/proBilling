@@ -219,6 +219,8 @@ allow={$sip_codec3}
 qualify={$sip_qualifily}
 context=probilling
 callerid={$sip_numero}
+callgroup=1
+pickupgroup=1
         ";
         endforeach;
     }
