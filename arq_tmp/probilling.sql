@@ -454,7 +454,7 @@ CREATE TABLE IF NOT EXISTS `kl_users` (
 INSERT INTO `kl_users` (`user_id`, `user_nome`, `user_email`, `user_ramal`, `user_login`, `user_senha`, `user_nivel`, `user_status`, `user_registrado`, `user_atualizacao`) VALUES
 (1, 'BrazisTelecom Suporte', 'suporte@brazistelecom.com.br', '0000', 'suporte', 'ee0afca3289b28e4f20e3a7afbc059d2', '3', 'S', '2016-10-10 19:04:04', '2018-05-17 16:11:20'),
 (2, 'Usuario', 'user@user.com.br', '0000', 'usuario', 'f8032d5cae3de20fcec887f395ec9a6a', '1', 'S', '2016-10-14 17:20:23', '2018-05-17 20:22:18'),
-(3, 'Administrador', 'admin@admin.com.br', '0000', 'admin', '36a4f479c45496e4811a6b9c5cbf578f', '2', 'S', '2016-10-20 17:08:13', '2020-05-15 13:25:17');
+(3, 'Administrador', 'admin@admin.com.br', '0000', 'admin', '5adafa5ec4a63a7c05e53ac1780b6bda', '2', 'S', '2016-10-20 17:08:13', '2020-05-15 13:25:17');
 
 -- --------------------------------------------------------
 
